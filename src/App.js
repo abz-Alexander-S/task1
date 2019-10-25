@@ -98,15 +98,15 @@ function App() {
     switch (name) {
       case 'multiline':
         currentFieldValue = values[name].lineChecker(currentFieldValue);
-        currentFieldValue = ((currentFieldValue) => {
-          let lines = currentFieldValue.split('\n');
+        currentFieldValue = ((text) => {
+          let lines = text.split('\n');
 
           return lines.reduce((correctString, line, lineNumber) => {
             line = line.trim();
             if (lineNumber === 0) return line;
             return [correctString, line].join('\n');
           }, '');
-        })();
+        })(currentFieldValue);
         currentFieldValue = values[name].sizeChecker(currentFieldValue);
         break;
 
